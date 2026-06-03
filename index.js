@@ -275,7 +275,7 @@ function setupContactForm() {
       submitBtn.innerHTML = originalBtnText;
 
       // Successful message
-      showStatus(`Thank you, ${name}! Your security consultation request has been received. Our Operations Team led by Director Atish Kumar will reach out to you within 24 hours on ${phone}.`, 'success');
+      showStatus(`Thank you, ${name}! Your security consultation request has been received. Our Operations Team will reach out to you within 24 hours on ${phone}.`, 'success');
       form.reset();
       
       // Update calculator checkbox visual elements to default values

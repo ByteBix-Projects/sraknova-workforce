@@ -883,109 +883,102 @@ a {
   border-bottom: 1px solid var(--border-color);
 }
 
-.director-card {
+/* Directors Grid Layout */
+.directors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.director-profile-card {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
-  border-radius: 24px;
+  border-radius: 16px;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  max-width: 950px;
-  margin: 0 auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.director-photo-container {
-  background: radial-gradient(circle at center, var(--bg-tertiary) 0%, var(--bg-primary) 100%);
+  transition: all var(--transition-normal);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem;
-  border-right: 1px solid var(--border-color);
-  text-align: center;
 }
 
-.director-avatar-box {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid var(--accent-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-secondary);
-  color: var(--accent-gold);
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+.director-profile-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 15px 30px rgba(245, 158, 11, 0.15);
 }
 
-.director-avatar-box svg {
-  width: 70px;
-  height: 70px;
+.director-photo-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 110%; /* slightly taller than square for nice portrait aspect ratio */
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
 }
 
-.director-info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.25rem;
+.director-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
 }
 
-.director-info .title {
-  font-size: 0.85rem;
-  color: var(--accent-gold);
+.director-profile-card:hover .director-img {
+  transform: scale(1.05);
+}
+
+.director-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #d97706 100%);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
-.director-info .din {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.director-badge.ceo-badge {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #fff;
 }
 
-.director-bio {
-  padding: 3rem;
+.director-meta {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.quote-icon {
-  color: var(--accent-gold-glow);
-  width: 45px;
-  height: 45px;
-  margin-bottom: 1.5rem;
-}
-
-.director-quote {
-  font-size: 1.15rem;
-  font-style: italic;
-  line-height: 1.7;
-  color: var(--text-main);
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.director-fact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  border-top: 1px solid var(--border-color);
-  padding-top: 1.5rem;
-}
-
-.director-fact-item h5 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
+.director-meta h3 {
+  font-size: 1.2rem;
   margin-bottom: 0.25rem;
+  color: var(--text-main);
 }
 
-.director-fact-item p {
-  color: var(--text-main);
+.director-title {
+  font-size: 0.85rem;
+  color: var(--accent-gold);
   font-weight: 600;
-  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.director-tagline {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: auto;
 }
 
 /* Compliance Badges */
@@ -1369,18 +1362,8 @@ a {
     height: 400px;
   }
   
-  .director-card {
-    grid-template-columns: 1fr;
-  }
-  
-  .director-photo-container {
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    padding: 2.5rem;
-  }
-  
-  .director-bio {
-    padding: 2.5rem;
+  .directors-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .contact-grid {
@@ -1462,8 +1445,7 @@ a {
     grid-template-columns: 1fr;
   }
   
-  .director-fact-grid {
+  .directors-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 }
